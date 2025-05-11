@@ -16,30 +16,97 @@
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/second"
         tools:context=".MainActivity">
 
-        <EditText
-            android:id="@+id/editText"
+        <com.mod.moodsong.NoteAnimationView
+            android:id="@+id/noteAnimationView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="15dp"
-            android:text="@={viewModel.enteredText}"
-            app:isVisible="@{!viewModel.isFound() || !viewModel.isLoading()}"
-            app:layout_constraintBottom_toTopOf="@+id/button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="match_parent" />
 
-        <Button
-            android:id="@+id/button"
+        <TextView
+            android:id="@+id/titleTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="get a song"
-            app:isVisible="@{!viewModel.isFound() || !viewModel.isLoading()}"
+            android:fontFamily="@font/space_grotesk_semi_bold"
+            android:gravity="center"
+            android:text="Let the music\nfeel you."
+            android:textColor="@color/prim"
+            android:textSize="32sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/inputLL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:alpha="0"
+            android:orientation="vertical"
+            android:translationY="40dp"
+            app:layout_constraintBottom_toTopOf="@+id/button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <FrameLayout
+                android:id="@+id/editContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:fontFamily="@font/space_grotesk_regular"
+                    android:hint="Tell us how you feel..."
+                    android:inputType="text"
+                    android:paddingVertical="12dp"
+                    android:text="@={viewModel.enteredText}"
+                    android:textColor="@color/white"
+                    android:textColorHint="#88FFFFFF"
+                    android:textSize="16sp"
+                    app:isVisible="@{!viewModel.isFound() || !viewModel.isLoading()}" />
+
+            </FrameLayout>
+
+            <View
+                android:id="@+id/underlineView"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_gravity="start"
+                android:alpha="0"
+                android:background="@drawable/bg_underline_anim" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="15dp"
+            android:alpha="0"
+            android:background="@drawable/sadsa"
+            android:translationY="40dp"
+            app:isVisible="@{!viewModel.isFound() || !viewModel.isLoading()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/space_grotesk_medium"
+                android:text="get a song"
+                android:textColor="@color/second"
+                android:textSize="14sp" />
+
+        </RelativeLayout>
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/verticalGuideline"
@@ -57,141 +124,281 @@
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/rec1CV"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:cardCornerRadius="0dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/prim_soft"
+            app:cardCornerRadius="12dp"
             app:isVisible="@{viewModel.isFound()}"
             app:layout_constraintBottom_toBottomOf="@id/horizontalGuideline"
             app:layout_constraintEnd_toEndOf="@id/verticalGuideline"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:strokeWidth="0dp">
+            app:strokeColor="@color/prim"
+            app:strokeWidth="2dp">
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                app:imageUrl="@{viewModel.rec1.coverImageUrl}" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/bg_gradient" />
-
-            <TextView
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_margin="10dp"
-                android:gravity="center"
-                android:text='@{viewModel.rec1.title + "-" + viewModel.rec1.artist}'
-                android:textColor="@color/white"
-                android:textSize="14sp" />
+                android:padding="8dp">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/photoIV1"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:scaleType="centerCrop"
+                    app:imageUrl="@{viewModel.rec1.coverImageUrl}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:riv_corner_radius="12dp"
+                    tools:src="@color/prim" />
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_note"
+                    app:layout_constraintBottom_toBottomOf="@+id/photoIV1"
+                    app:layout_constraintEnd_toEndOf="@+id/photoIV1"
+                    app:layout_constraintStart_toStartOf="@+id/photoIV1"
+                    app:layout_constraintTop_toTopOf="@+id/photoIV1" />
+
+                <TextView
+                    android:id="@+id/nameTV1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text='@{viewModel.rec1.title}'
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/space_grotesk_semi_bold"
+                    android:textColor="@color/prim"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/photoIV1"
+                    tools:text="Nilüfer" />
+
+                <TextView
+                    android:id="@+id/singerTV1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/space_grotesk_regular"
+                    android:textColor="@color/prim"
+                    android:text='@{viewModel.rec1.artist}'
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/nameTV1"
+                    tools:text="Müslüm Gürses" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/rec2CV"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:cardCornerRadius="0dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/prim_soft"
+            app:cardCornerRadius="12dp"
             app:isVisible="@{viewModel.isFound()}"
             app:layout_constraintBottom_toBottomOf="@id/horizontalGuideline"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/verticalGuideline"
+            app:layout_constraintStart_toStartOf="@+id/verticalGuideline"
             app:layout_constraintTop_toTopOf="parent"
-            app:strokeWidth="0dp">
+            app:strokeColor="@color/prim"
+            app:strokeWidth="2dp">
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                app:imageUrl="@{viewModel.rec2.coverImageUrl}" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/bg_gradient" />
-
-            <TextView
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_margin="10dp"
-                android:gravity="center"
-                android:text='@{viewModel.rec2.title + "-" + viewModel.rec2.artist}'
-                android:textColor="@color/white"
-                android:textSize="14sp" />
+                android:padding="8dp">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/photoIV2"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:scaleType="centerCrop"
+                    app:imageUrl="@{viewModel.rec2.coverImageUrl}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:riv_corner_radius="12dp"
+                    tools:src="@color/prim" />
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_note"
+                    app:layout_constraintBottom_toBottomOf="@+id/photoIV2"
+                    app:layout_constraintEnd_toEndOf="@+id/photoIV2"
+                    app:layout_constraintStart_toStartOf="@+id/photoIV2"
+                    app:layout_constraintTop_toTopOf="@+id/photoIV2" />
+
+                <TextView
+                    android:id="@+id/nameTV2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/space_grotesk_semi_bold"
+                    android:text='@{viewModel.rec2.title}'
+                    android:textColor="@color/prim"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/photoIV2"
+                    tools:text="Nilüfer" />
+
+                <TextView
+                    android:id="@+id/singerTV2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/space_grotesk_regular"
+                    android:text='@{viewModel.rec2.artist}'
+                    android:textColor="@color/prim"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/nameTV2"
+                    tools:text="Müslüm Gürses" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/rec3CV"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:cardCornerRadius="0dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/prim_soft"
+            app:cardCornerRadius="12dp"
             app:isVisible="@{viewModel.isFound()}"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/verticalGuideline"
+            app:layout_constraintEnd_toEndOf="@id/verticalGuideline"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/horizontalGuideline"
-            app:strokeWidth="0dp">
+            app:layout_constraintTop_toTopOf="@+id/horizontalGuideline"
+            app:strokeColor="@color/prim"
+            app:strokeWidth="2dp">
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                app:imageUrl="@{viewModel.rec3.coverImageUrl}" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/bg_gradient" />
-
-            <TextView
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_margin="10dp"
-                android:gravity="center"
-                android:text='@{viewModel.rec3.title + "-" + viewModel.rec3.artist}'
-                android:textColor="@color/white"
-                android:textSize="14sp" />
+                android:padding="8dp">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/photoIV3"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:scaleType="centerCrop"
+                    app:imageUrl="@{viewModel.rec3.coverImageUrl}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:riv_corner_radius="12dp"
+                    tools:src="@color/prim" />
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_note"
+                    app:layout_constraintBottom_toBottomOf="@+id/photoIV3"
+                    app:layout_constraintEnd_toEndOf="@+id/photoIV3"
+                    app:layout_constraintStart_toStartOf="@+id/photoIV3"
+                    app:layout_constraintTop_toTopOf="@+id/photoIV3" />
+
+                <TextView
+                    android:id="@+id/nameTV3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/space_grotesk_semi_bold"
+                    android:text='@{viewModel.rec3.title}'
+                    android:textColor="@color/prim"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/photoIV3"
+                    tools:text="Nilüfer" />
+
+                <TextView
+                    android:id="@+id/singerTV3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/space_grotesk_regular"
+                    android:text='@{viewModel.rec3.artist}'
+                    android:textColor="@color/prim"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/nameTV3"
+                    tools:text="Müslüm Gürses" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/rec4CV"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:cardCornerRadius="0dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/prim_soft"
+            app:cardCornerRadius="12dp"
             app:isVisible="@{viewModel.isFound()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/verticalGuideline"
-            app:layout_constraintTop_toBottomOf="@id/horizontalGuideline"
-            app:strokeWidth="0dp">
+            app:layout_constraintStart_toStartOf="@+id/verticalGuideline"
+            app:layout_constraintTop_toTopOf="@+id/horizontalGuideline"
+            app:strokeColor="@color/prim"
+            app:strokeWidth="2dp">
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                app:imageUrl="@{viewModel.rec4.coverImageUrl}" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/bg_gradient" />
-
-            <TextView
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_margin="10dp"
-                android:gravity="center"
-                android:text='@{viewModel.rec4.title + "-" + viewModel.rec4.artist}'
-                android:textColor="@color/white"
-                android:textSize="14sp" />
+                android:padding="8dp">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/photoIV4"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:scaleType="centerCrop"
+                    app:imageUrl="@{viewModel.rec4.coverImageUrl}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:riv_corner_radius="12dp"
+                    tools:src="@color/prim" />
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_note"
+                    app:layout_constraintBottom_toBottomOf="@+id/photoIV4"
+                    app:layout_constraintEnd_toEndOf="@+id/photoIV4"
+                    app:layout_constraintStart_toStartOf="@+id/photoIV4"
+                    app:layout_constraintTop_toTopOf="@+id/photoIV4" />
+
+                <TextView
+                    android:id="@+id/nameTV4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/space_grotesk_semi_bold"
+                    android:text='@{viewModel.rec4.title}'
+                    android:textColor="@color/prim"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/photoIV4"
+                    tools:text="Nilüfer" />
+
+                <TextView
+                    android:id="@+id/singerTV4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/space_grotesk_regular"
+                    android:text='@{viewModel.rec4.artist}'
+                    android:textColor="@color/prim"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/nameTV4"
+                    tools:text="Müslüm Gürses" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </com.google.android.material.card.MaterialCardView>
 
@@ -200,6 +407,17 @@
             android:layout_height="100dp"
             android:visibility="gone"
             app:isVisible="@{viewModel.isLoading()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <FrameLayout
+            android:id="@+id/fakeContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipChildren="false"
+            android:clipToPadding="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -2,4 +2,26 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="prim">#FF6F61</color>
+    <color name="second">#1A1A2E</color>
+    <color name="third">#E8FF61</color>
+    <color name="fourth">#C5A3FF</color>
+    <color name="fifth">#4EF1C0</color>
+
+    <color name="prim_soft">#FFD5D1</color>
+    <color name="second_soft">#4A4A66</color>
+    <color name="third_soft">#F8FFAD</color>
+    <color name="fourth_soft">#E1D4FF</color>
+    <color name="fifth_soft">#C5FBE8</color>
+
+    <color name="prim_op15">#26FF6F61</color>
+    <color name="second_op10">#1A1A2E1A</color>
+    <color name="third_op15">#26E8FF61</color>
+    <color name="fourth_op15">#26C5A3FF</color>
+    <color name="fifth_op15">#264EF1C0</color>
+
+
+    <color name="colorWave">#26263a</color> <!-- dalga için biraz açık tonu -->
+
 </resources>

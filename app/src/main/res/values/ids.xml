@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <resources>
+        <item name="tag_animator"  type="id"/>
+        <item name="tag_spring_x"  type="id"/>   <!-- eklendi -->
+        <item name="tag_spring_y"  type="id"/>   <!-- eklendi -->
+    </resources>

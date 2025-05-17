@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="onboardWelcomeText">Sana daha iyi şarkılar önerebilmek için önce seni biraz tanımak istiyoruz.</string>
+    <string name="onboardQ1">Şarkıları genelde hangi dillerde dinlersin?</string>
+    <string name="onboardQ1Hint">Türkçe, İngilizce, Fransızca...</string>
+    <string name="onboardQ1SkipBtn">Fark etmez</string>
+    <string name="onboardQ1Btn">Kaydet</string>
+
+    <string name="onboardQ2">Hangi tarzları daha çok dinlersin?</string>
+    <string name="onboardQ2Sub">Sırayla seç ya da sürükleyip en sevdiklerini üste taşı.</string>
+    <string name="onboardQ2Btn">Devam et</string>
+
+    <string name="onboardQ3">Müzik dinlerken en çok neye dikkat edersin?</string>
+    <string name="onboardQ3Option1">Sözler benim için çok önemli</string>
+    <string name="onboardQ3Option2">Melodi ve ritim daha önemli</string>
+    <string name="onboardQ3Option3">İkisi de önemli</string>
+    <string name="onboardQ3Option4">Sadece arkada çalsın yeter</string>
+
+    <string name="onboardThankYou">Verdiğin cevaplar için teşekkürler!\nArtık sana en uygun şarkıları önerebiliriz.</string>
+
+</resources>

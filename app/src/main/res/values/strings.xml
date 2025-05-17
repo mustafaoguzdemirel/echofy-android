@@ -1,3 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">MoodSong</string>
+    <string name="app_name" translatable="false">Echofy</string>
+
+    <string name="onboardWelcomeText">To recommend better songs, we’d like to get to know you a bit first.</string>
+    <string name="onboardQ1">Which languages do you usually listen to music in?</string>
+    <string name="onboardQ1Hint">Turkish, English, French...</string>
+    <string name="onboardQ1SkipBtn">Doesn’t matter</string>
+    <string name="onboardQ1Btn">Save</string>
+
+    <string name="onboardQ2">Which genres do you listen to the most?</string>
+    <string name="onboardQ2Sub">Tap in order or drag to put your favorites on top.</string>
+    <string name="onboardQ2Btn">Continue</string>
+
+    <string name="onboardQ3">What do you pay the most attention to when listening to music?</string>
+    <string name="onboardQ3Option1">The lyrics are very important to me</string>
+    <string name="onboardQ3Option2">The melody and rhythm matter more</string>
+    <string name="onboardQ3Option3">Both are equally important</string>
+    <string name="onboardQ3Option4">I just want something playing in the background</string>
+
+    <string name="onboardThankYou">Thanks for your answers!\nWe’re now ready to suggest the best songs for your mood.</string>
+
 </resources>

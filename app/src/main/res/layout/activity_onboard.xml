@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/second">
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/linearProgressIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:max="4"
+            app:indicatorColor="@color/prim"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:trackColor="@color/second_soft"
+            app:trackCornerRadius="0dp"
+            app:trackThickness="5dp" />
+
+        <TextView
+            android:id="@+id/firstText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:fontFamily="@font/space_grotesk_semi_bold"
+            android:gravity="center"
+            android:text="@string/onboardWelcomeText"
+            android:textColor="@color/prim"
+            android:textSize="24sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/q1TV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/space_grotesk_semi_bold"
+            android:text="@string/onboardQ1"
+            android:textColor="@color/prim"
+            android:textSize="24sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/q2TV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/space_grotesk_semi_bold"
+            android:text="@string/onboardQ2"
+            android:textColor="@color/prim"
+            android:textSize="24sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/q3TV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/space_grotesk_semi_bold"
+            android:text="@string/onboardQ2"
+            android:textColor="@color/prim"
+            android:textSize="24sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RadioGroup
+            android:id="@+id/onboardQ3RadioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="16dp"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/nextBtn3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/q3TV">
+
+            <RadioButton
+                android:id="@+id/onboardQ3Option1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/prim"
+                android:fontFamily="@font/space_grotesk_regular"
+                android:text="@string/onboardQ3Option1"
+                android:textColor="@color/white" />
+
+            <RadioButton
+                android:id="@+id/onboardQ3Option2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/prim"
+                android:fontFamily="@font/space_grotesk_regular"
+                android:text="@string/onboardQ3Option2"
+                android:textColor="@color/white" />
+
+            <RadioButton
+                android:id="@+id/onboardQ3Option3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/prim"
+                android:fontFamily="@font/space_grotesk_regular"
+                android:text="@string/onboardQ3Option3"
+                android:textColor="@color/white" />
+
+            <RadioButton
+                android:id="@+id/onboardQ3Option4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/prim"
+                android:fontFamily="@font/space_grotesk_regular"
+                android:text="@string/onboardQ3Option4"
+                android:textColor="@color/white" />
+        </RadioGroup>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/optionsRV"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            android:overScrollMode="never"
+            android:paddingTop="120dp"
+            android:paddingBottom="100dp"
+            android:scrollbars="none"
+            android:visibility="gone"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:itemCount="7"
+            tools:listitem="@layout/child_item_option" />
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="@null"
+            android:fontFamily="@font/space_grotesk_regular"
+            android:hint="@string/onboardQ1Hint"
+            android:inputType="text"
+            android:paddingVertical="12dp"
+            android:textColor="@color/white"
+            android:textColorHint="#88FFFFFF"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/q1TV" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/nextBtn1"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginHorizontal="15dp"
+            android:backgroundTint="@color/prim"
+            android:fontFamily="@font/space_grotesk_medium"
+            android:text="@string/onboardQ1Btn"
+            android:textColor="@color/second"
+            android:textSize="14sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/skipBtn1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/skipBtn1"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginBottom="32dp"
+            android:backgroundTint="@android:color/transparent"
+            android:fontFamily="@font/space_grotesk_medium"
+            android:text="@string/onboardQ1SkipBtn"
+            android:textColor="@color/prim"
+            android:textSize="14sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:strokeColor="@color/prim"
+            app:strokeWidth="2dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/nextBtn2"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginHorizontal="15dp"
+            android:backgroundTint="@color/prim"
+            android:fontFamily="@font/space_grotesk_medium"
+            android:text="@string/onboardQ1Btn"
+            android:textColor="@color/second"
+            android:textSize="14sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/skipBtn2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/skipBtn2"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginBottom="32dp"
+            android:backgroundTint="@android:color/transparent"
+            android:fontFamily="@font/space_grotesk_medium"
+            android:text="@string/onboardQ1SkipBtn"
+            android:textColor="@color/prim"
+            android:textSize="14sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:strokeColor="@color/prim"
+            app:strokeWidth="2dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/nextBtn3"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginHorizontal="15dp"
+            android:backgroundTint="@color/prim"
+            android:fontFamily="@font/space_grotesk_medium"
+            android:text="@string/onboardQ1Btn"
+            android:textColor="@color/second"
+            android:textSize="14sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/skipBtn3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/skipBtn3"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginBottom="32dp"
+            android:backgroundTint="@android:color/transparent"
+            android:fontFamily="@font/space_grotesk_medium"
+            android:text="@string/onboardQ1SkipBtn"
+            android:textColor="@color/prim"
+            android:textSize="14sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:strokeColor="@color/prim"
+            app:strokeWidth="2dp" />
+
+        <View
+            android:id="@+id/overlayView"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/prim"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/thxText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:fontFamily="@font/space_grotesk_semi_bold"
+            android:gravity="center"
+            android:text="@string/onboardThankYou"
+            android:textColor="@color/second"
+            android:textSize="24sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
+
